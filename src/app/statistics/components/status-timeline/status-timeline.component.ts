@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-status-timeline',
   templateUrl: './status-timeline.component.html',
   styleUrls: ['./status-timeline.component.scss']
 })
-export class StatusTimelineComponent implements OnInit {
+export class StatusTimelineComponent {
 
   static type = 'graph';
   static typeIcon = 'stats';
@@ -15,8 +15,5 @@ export class StatusTimelineComponent implements OnInit {
   static changeable = true;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

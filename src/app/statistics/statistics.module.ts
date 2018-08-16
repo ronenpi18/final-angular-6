@@ -9,7 +9,7 @@ import { StatisticsComponent } from './statistics.component';
 import { LatencyGraphComponent } from './components/latency-graph/latency-graph.component';
 import { EventsTableComponent } from './components/events-table/events-table.component';
 import { DynamicComponentDirective } from './dynamic-component/dynamic-component.directive';
-import { BaseComponentComponent } from './base-component/base-component.component';
+import { StatisticContainerComponent } from './statistic-container/statistic-container.component';
 import { MapComponent } from './components/map/map.component';
 import { StatusTimelineComponent } from './components/status-timeline/status-timeline.component';
 import { StatusDivisionsComponent } from './components/status-divisions/status-divisions.component';
@@ -27,7 +27,7 @@ import { StatusDivisionsComponent } from './components/status-divisions/status-d
     LatencyGraphComponent,
     EventsTableComponent,
     DynamicComponentDirective,
-    BaseComponentComponent,
+    StatisticContainerComponent,
     MapComponent,
     StatusTimelineComponent,
     StatusDivisionsComponent

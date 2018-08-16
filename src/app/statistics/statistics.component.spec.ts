@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MenuModule } from 'primeng/menu';
+import { CardModule } from 'primeng/card';
 
 import { StatisticsComponent } from './statistics.component';
+import { StatisticContainerComponent } from './statistic-container/statistic-container.component';
+import { DynamicComponentDirective } from './dynamic-component/dynamic-component.directive';
 
 describe('StatisticsComponent', () => {
   let component: StatisticsComponent;
@@ -8,7 +13,16 @@ describe('StatisticsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatisticsComponent ]
+      declarations: [
+        StatisticsComponent,
+        StatisticContainerComponent,
+        DynamicComponentDirective
+      ],
+      imports: [
+        MatGridListModule,
+        MenuModule,
+        CardModule
+      ]
     })
     .compileComponents();
   }));

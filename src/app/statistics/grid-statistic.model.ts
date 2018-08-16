@@ -1,8 +1,8 @@
 import { Observable, BehaviorSubject } from 'rxjs';
 
-import StatisticsBaseComponent from '../components/component.model';
+import { StatisticsBaseComponent } from './components/component.model';
 
-export default class Statistic {
+export class GridStatistic {
 
   public component$: BehaviorSubject<StatisticsBaseComponent>;
 

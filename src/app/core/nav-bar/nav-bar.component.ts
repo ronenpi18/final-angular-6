@@ -40,7 +40,7 @@ export class NavBarComponent implements OnInit {
     this.timeClock$ = this.minute$.pipe(
       map(() => {
         const date = new Date();
-        return `${date.getHours()}:${fillWithZeros(date.getMinutes(), 2)}`  ;
+        return `${fillWithZeros(date.getHours(), 2)}:${fillWithZeros(date.getMinutes(), 2)}`;
       })
     );
   }
@@ -49,9 +49,10 @@ export class NavBarComponent implements OnInit {
   private startDayClock(): void {
     this.dateClock$ = this.minute$.pipe(
       map(() => {
+        debugger;
         const date = new Date();
         const hebrewDay = this.globals.hebrewDays[date.getDay()];
-        const month = fillWithZeros(date.getMonth(), 2);
+        const month = fillWithZeros(date.getMonth() + 1, 2);
         const year = date.getFullYear().toString().slice(2);
         return `${hebrewDay}, ${date.getDate()}.${month}.${year}`;
       })

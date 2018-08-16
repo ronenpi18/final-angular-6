@@ -4,7 +4,11 @@ describe('DashboardModule', () => {
   let dashboardModule: DashboardModule;
 
   beforeEach(() => {
-    dashboardModule = new DashboardModule();
+    try {
+      dashboardModule = new DashboardModule();
+    } catch(e) {
+      console.log(e);
+    }
   });
 
   it('should create an instance', () => {

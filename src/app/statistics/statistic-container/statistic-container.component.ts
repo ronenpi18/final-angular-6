@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import Statistic from './base-statistic.model';
+import { GridStatistic } from '../grid-statistic.model';
 import { EventsTableComponent } from '../components/events-table/events-table.component';
 import { LatencyGraphComponent } from '../components/latency-graph/latency-graph.component';
-import StatisticsBaseComponent from '../components/component.model';
+import { StatisticsBaseComponent } from '../components/component.model';
 import { MapComponent } from '../components/map/map.component';
 import { StatusTimelineComponent } from '../components/status-timeline/status-timeline.component';
 import { StatusDivisionsComponent } from '../components/status-divisions/status-divisions.component';
@@ -25,15 +25,15 @@ interface IListItem {
 };
 
 @Component({
-  selector: 'app-statistics-base-component',
-  templateUrl: './base-component.component.html',
-  styleUrls: ['./base-component.component.scss']
+  selector: 'app-statistic-container',
+  templateUrl: './statistic-container.component.html',
+  styleUrls: ['./statistic-container.component.scss']
 })
-export class BaseComponentComponent implements OnInit {
+export class StatisticContainerComponent implements OnInit {
 
   availableComponents$: Observable<IListItem[]>;
 
-  @Input() statistic: Statistic;
+  @Input() statistic: GridStatistic;
 
   constructor() {}
 

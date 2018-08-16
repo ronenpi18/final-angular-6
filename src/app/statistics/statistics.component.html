@@ -4,9 +4,9 @@
       [colspan]="statistic.cols"
       [rowspan]="statistic.rows">
 
-    <app-statistics-base-component class="full-size" [statistic]="statistic">
+    <app-statistic-container class="full-size" [statistic]="statistic">
       <ng-template [appDynamicComponent]="statistic.component$"></ng-template>
-    </app-statistics-base-component>
+    </app-statistic-container>
 
   </mat-grid-tile>
 </mat-grid-list>
