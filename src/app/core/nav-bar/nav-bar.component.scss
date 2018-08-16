@@ -1,0 +1,27 @@
+nav {
+    background: white;
+}
+
+.container {
+    display: flex;
+    &.left-side {
+        justify-content: flex-end;
+    }
+}
+
+.logo {
+    font-size: 2.8rem;
+}
+
+p-button {
+    font-size: 2.5rem;
+}
+
+.minute-clock, .day-clock {
+    margin-left: 3rem;
+}
+
+// buttons wider, affecting button inside p-button component
+:host ::ng-deep p-button[icon] button.ui-button {
+    padding: 0 3rem;
+}

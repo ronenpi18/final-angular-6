@@ -1,0 +1,12 @@
+<mat-grid-list class="flex-grow" cols="2" rows="3" rowHeight="fit" gutterSize="2%">
+  <mat-grid-tile
+      *ngFor="let statistic of preset"
+      [colspan]="statistic.cols"
+      [rowspan]="statistic.rows">
+
+    <app-statistics-base-component class="full-size" [statistic]="statistic">
+      <ng-template [appDynamicComponent]="statistic.component$"></ng-template>
+    </app-statistics-base-component>
+
+  </mat-grid-tile>
+</mat-grid-list>

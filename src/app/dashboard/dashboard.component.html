@@ -1,0 +1,14 @@
+<div class="full-height layout-row">
+
+    <div class="moving-panel"
+         [class.expanded]="movingPanelExpanded"
+         (click)="movingPanelExpanded = !movingPanelExpanded">
+
+        <div class="moving-panel-content full-abs layout-row">
+            <app-family-selector class="flex-grow"></app-family-selector>
+            <app-real-time class="flex-grow"></app-real-time>
+        </div>
+    </div>
+
+    <app-statistics class="flex-grow"></app-statistics>
+</div>

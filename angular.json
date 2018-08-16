@@ -20,10 +20,15 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/styles",
+              "src/fonts"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "src/fonts/index.scss",
+              "src/styles/index.scss"
             ],
             "scripts": []
           },
@@ -77,7 +82,9 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/styles",
+              "src/fonts"
             ]
           }
         },
@@ -123,5 +130,10 @@
       }
     }
   },
-  "defaultProject": "final-demo"
+  "defaultProject": "final-demo",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

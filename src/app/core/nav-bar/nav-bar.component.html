@@ -1,0 +1,23 @@
+<nav class="vertical-center-items layout-row">
+
+  <!-- right side -->
+  <div class="flex-grow container vertical-center-items">
+    <p-button styleClass="ui-button-transparent" icon="icon icon-bullet-list"></p-button>
+    <p-button styleClass="ui-button-transparent" label="קובץ"></p-button>
+    <p-button styleClass="ui-button-transparent" label="תצוגה"></p-button>
+    <p-button styleClass="ui-button-transparent" label="חלון"></p-button>
+  </div>
+    
+  <!-- logo -->
+  <span class="logo icon icon-octologo"></span>
+  
+  <!-- left side -->
+  <div class="flex-grow container left-side vertical-center-items">
+    <span class="day-clock">{{dateClock$ | async}}</span>
+    <span class="minute-clock">{{timeClock$ | async}}</span>
+    <p-button styleClass="ui-button-transparent" icon="icon icon-panels"></p-button>
+    <p-button styleClass="ui-button-transparent" icon="icon icon-settings"></p-button>
+    <p-button styleClass="ui-button-transparent" icon="icon icon-stats"></p-button>
+    <p-button styleClass="ui-button-transparent" icon="icon icon-bullet-list"></p-button>
+  </div>
+</nav>

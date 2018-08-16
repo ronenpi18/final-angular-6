@@ -1,0 +1,39 @@
+body .ui-widget {
+    font-size: 100%;
+}
+
+/* BUTTON OVERRIDES */
+body .ui-button {
+    // Radious to 0
+    &.ui-corner-all {
+        border-radius: 0px;
+    }
+    // Transparent button style (ui-button-transparent)
+    &.ui-state-default.ui-button-transparent {
+        color: #333333;
+        background-color: transparent;
+        border: 1px solid transparent;
+
+        &:enabled:focus {
+            background-color: white;
+        }
+
+        &:enabled:hover {
+            background-color: #c8c8c8;
+            color: #333333;
+            border-color: #c8c8c8;
+        }
+
+        &:enabled:active {
+            background-color: #a0a0a0;
+            color: #333333;
+            border-color: #a0a0a0;
+        }
+    }
+}
+
+body .ui-card {
+    &.ui-full-height {
+        height: calc(100% - 2px);
+    }
+}

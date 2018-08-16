@@ -1,0 +1,13 @@
+<!-- (click)="changeComponent()" -->
+<p-card class="full-size" styleClass="ui-full-height">
+
+  <p-menu appendTo="body" #menu [popup]="true" [model]="availableComponents$ | async"></p-menu>
+  <p-button styleClass="ui-button-transparent"
+            icon="icon icon-{{(statistic.component$ | async).icon}}"
+            (click)="menu.toggle($event)">
+  </p-button>
+
+  {{((statistic.component$ | async).title)}}
+  
+  <ng-content></ng-content>
+</p-card>
