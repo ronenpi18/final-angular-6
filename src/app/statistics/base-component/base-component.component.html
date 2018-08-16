@@ -1,13 +1,31 @@
 <!-- (click)="changeComponent()" -->
 <p-card class="full-size" styleClass="ui-full-height">
+  <div class="header layout-row vertical-center-items">
 
-  <p-menu appendTo="body" #menu [popup]="true" [model]="availableComponents$ | async"></p-menu>
-  <p-button styleClass="ui-button-transparent"
-            icon="icon icon-{{(statistic.component$ | async).icon}}"
-            (click)="menu.toggle($event)">
-  </p-button>
+    <!-- statitistic icon -->
+    <span class="icon icon-{{(statistic.component$ | async).icon}} title-icon"></span>
+    <!-- title -->
+    <span class="title">{{((statistic.component$ | async).title)}}</span>
+    
+    <span class="flex-grow"></span>
+    
+    <!-- change statistic dropdown menu -->
+    <p-menu styleClass="statistic-change" appendTo="body" #menu [popup]="true" [model]="availableComponents$ | async"></p-menu>
 
-  {{((statistic.component$ | async).title)}}
-  
+    <!-- change statistic dropdown button -->
+    <div class="graph-change-btn"
+         *ngIf="(statistic.component$ | async).changeable"
+         (click)="menu.toggle($event)">
+      <span class="icon icon-{{(statistic.component$ | async).typeIcon}}"></span>
+      <span class="icon icon-arrow-down arrow-icon"></span>
+    </div>
+
+    <!-- close statistic button -->
+    <div class="close-btn"
+         *ngIf="(statistic.component$ | async).closable">
+      <span class="icon icon-close"></span>
+    </div>
+  </div>
+
   <ng-content></ng-content>
 </p-card>

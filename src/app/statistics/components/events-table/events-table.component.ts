@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsTableComponent {
 
-  static type = 'test';
+  static type = 'data';
   static title = 'מופעים';
   static icon = 'speedometer';
+  static closable = true;
+  static changeable = false;
 
   constructor() { }
 

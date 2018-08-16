@@ -25,3 +25,9 @@ p-button {
 :host ::ng-deep p-button[icon] button.ui-button {
     padding: 0 3rem;
 }
+
+// TODO please check this crazy vertial align, good luck :)
+:host ::ng-deep .temp-vertical-align-fix .ui-button-text {
+    position: relative;
+    top: -.5rem;
+}

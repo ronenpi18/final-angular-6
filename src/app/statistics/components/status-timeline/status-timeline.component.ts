@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusTimelineComponent implements OnInit {
 
-  static type = 'test';
+  static type = 'graph';
+  static typeIcon = 'stats';
   static title = 'סטטוס';
   static icon = 'line-graph';
+  static closable = false;
+  static changeable = true;
 
   constructor() { }
 

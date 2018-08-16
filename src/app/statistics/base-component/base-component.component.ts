@@ -8,12 +8,14 @@ import { LatencyGraphComponent } from '../components/latency-graph/latency-graph
 import StatisticsBaseComponent from '../components/component.model';
 import { MapComponent } from '../components/map/map.component';
 import { StatusTimelineComponent } from '../components/status-timeline/status-timeline.component';
+import { StatusDivisionsComponent } from '../components/status-divisions/status-divisions.component';
 
 const allComponents: StatisticsBaseComponent[] = [
   EventsTableComponent,
   LatencyGraphComponent,
   MapComponent,
-  StatusTimelineComponent
+  StatusTimelineComponent,
+  StatusDivisionsComponent
 ];
 
 interface IListItem {

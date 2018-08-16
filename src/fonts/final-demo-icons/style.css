@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'final-demo-icons';
-  src:  url('fonts/final-demo-icons.eot?xjk6qv');
-  src:  url('fonts/final-demo-icons.eot?xjk6qv#iefix') format('embedded-opentype'),
-    url('fonts/final-demo-icons.ttf?xjk6qv') format('truetype'),
-    url('fonts/final-demo-icons.woff?xjk6qv') format('woff'),
-    url('fonts/final-demo-icons.svg?xjk6qv#final-demo-icons') format('svg');
+  src:  url('fonts/final-demo-icons.eot?v9oxq8');
+  src:  url('fonts/final-demo-icons.eot?v9oxq8#iefix') format('embedded-opentype'),
+    url('fonts/final-demo-icons.ttf?v9oxq8') format('truetype'),
+    url('fonts/final-demo-icons.woff?v9oxq8') format('woff'),
+    url('fonts/final-demo-icons.svg?v9oxq8#final-demo-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -74,6 +74,9 @@
 }
 .icon-add:before {
   content: "\e903";
+}
+.icon-arrow-down:before {
+  content: "\e909";
 }
 .icon-more:before {
   content: "\e907";

@@ -1,0 +1,25 @@
+.header {
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.title-icon {
+    margin-left: 1rem;
+    font-size: 2rem;
+}
+
+.graph-change-btn {
+    cursor: pointer;
+    font-size: 2rem;
+
+    .arrow-icon {
+        margin-left: .4rem;
+    }
+}
+
+::ng-deep .ui-menu.statistic-change .ui-menuitem-icon {
+    margin-left: 1rem;
+}

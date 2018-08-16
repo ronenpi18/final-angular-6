@@ -5,14 +5,14 @@ import { LatencyGraphComponent } from './components/latency-graph/latency-graph.
 import Statistic from './base-component/base-statistic.model';
 import { MapComponent } from './components/map/map.component';
 import { StatusTimelineComponent } from './components/status-timeline/status-timeline.component';
+import { StatusDivisionsComponent } from './components/status-divisions/status-divisions.component';
 
 const mockPreset: Statistic[] = [
-  new Statistic(EventsTableComponent, 1, 1),
   new Statistic(StatusTimelineComponent, 1, 1),
+  new Statistic(MapComponent, 1, 2),
+  new Statistic(StatusDivisionsComponent, 1, 1),
   new Statistic(LatencyGraphComponent, 1, 1),
-  new Statistic(MapComponent, 1, 1),
-  new Statistic(LatencyGraphComponent, 1, 1),
-  new Statistic(MapComponent, 1, 1)
+  new Statistic(EventsTableComponent, 1, 1)
 ];
 
 @Component({

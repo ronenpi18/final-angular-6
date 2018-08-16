@@ -12,6 +12,7 @@ import { DynamicComponentDirective } from './dynamic-component/dynamic-component
 import { BaseComponentComponent } from './base-component/base-component.component';
 import { MapComponent } from './components/map/map.component';
 import { StatusTimelineComponent } from './components/status-timeline/status-timeline.component';
+import { StatusDivisionsComponent } from './components/status-divisions/status-divisions.component';
 
 @NgModule({
   imports: [
@@ -28,13 +29,15 @@ import { StatusTimelineComponent } from './components/status-timeline/status-tim
     DynamicComponentDirective,
     BaseComponentComponent,
     MapComponent,
-    StatusTimelineComponent
+    StatusTimelineComponent,
+    StatusDivisionsComponent
   ],
   entryComponents: [
     LatencyGraphComponent,
     EventsTableComponent,
     MapComponent,
-    StatusTimelineComponent
+    StatusTimelineComponent,
+    StatusDivisionsComponent
   ],
   exports: [StatisticsComponent]
 })

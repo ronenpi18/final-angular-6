@@ -30,6 +30,7 @@
 		'icon-check-filled': '&#xea52;',
 		'icon-puzzle': '&#xe906;',
 		'icon-add': '&#xe903;',
+		'icon-arrow-down': '&#xe909;',
 		'icon-more': '&#xe907;',
 		'icon-panels': '&#xe901;',
 		'icon-line-graph': '&#xe908;',

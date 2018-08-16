@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-latency-graph',
-  templateUrl: './latency-graph.component.html',
-  styleUrls: ['./latency-graph.component.scss']
+  selector: 'app-status-divisions',
+  templateUrl: './status-divisions.component.html',
+  styleUrls: ['./status-divisions.component.scss']
 })
-export class LatencyGraphComponent implements OnInit {
+export class StatusDivisionsComponent implements OnInit {
 
   static type = 'graph';
   static typeIcon = 'graph-area';
-  static title = 'פיזור מופעים';
+  static title = 'התפלגות משכים';
   static icon = 'speedometer';
   static closable = false;
   static changeable = true;
