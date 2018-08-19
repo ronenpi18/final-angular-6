@@ -49,7 +49,6 @@ export class NavBarComponent implements OnInit {
   private startDayClock(): void {
     this.dateClock$ = this.minute$.pipe(
       map(() => {
-        debugger;
         const date = new Date();
         const hebrewDay = this.globals.hebrewDays[date.getDay()];
         const month = fillWithZeros(date.getMonth() + 1, 2);

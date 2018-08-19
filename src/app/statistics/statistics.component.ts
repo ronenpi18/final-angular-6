@@ -26,9 +26,6 @@ export class StatisticsComponent {
 
   constructor() {
     this.preset = mockPreset;
-    this.preset[0].component$.subscribe(component => {
-      console.log(component.title);
-    });
   }
 
 }

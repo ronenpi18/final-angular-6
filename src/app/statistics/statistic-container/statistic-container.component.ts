@@ -19,6 +19,7 @@ const allComponents: StatisticsBaseComponent[] = [
 ];
 
 interface IListItem {
+  component: StatisticsBaseComponent;
   label: string;
   icon: string;
   command: (event: any) => void
