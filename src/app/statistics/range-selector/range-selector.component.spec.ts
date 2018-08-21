@@ -54,12 +54,13 @@ describe('RangeSelectorComponent', () => {
     let oldTabs;
     // create tabs
     createRanges(3).pipe(
-      // save ranges to compare at the end of the test
-      tap(() => oldRanges = getRanges()),
+      // save state to compare at the end of the test
+      tap(() => {
+        oldRanges = getRanges();
+        oldTabs = getTabs();
+      }),
       // set selected tab
       flatMap(() => selectTab(2)),
-      // save tabs to compare at the end of the test
-      tap(() => oldTabs = getTabs()),
       // delete target tab
       flatMap(() => closeTab(1)),
     ).subscribe(() => {
@@ -78,12 +79,13 @@ describe('RangeSelectorComponent', () => {
     let oldTabs;
     // create tabs
     createRanges(3).pipe(
-      // save ranges to compare at the end of the test
-      tap(() => oldRanges = getRanges()),
+      // save state to compare at the end of the test
+      tap(() => {
+        oldRanges = getRanges();
+        oldTabs = getTabs();
+      }),
       // set selected tab
       flatMap(() => selectTab(2)),
-      // save tabs to compare at the end of the test
-      tap(() => oldTabs = getTabs()),
       // delete target tab
       flatMap(() => closeTab(3))
     ).subscribe(() => {
@@ -102,12 +104,13 @@ describe('RangeSelectorComponent', () => {
     let oldTabs;
     // create tabs
     createRanges(3).pipe(
-      // save ranges to compare at the end of the test
-      tap(() => oldRanges = getRanges()),
+      // save state to compare at the end of the test
+      tap(() => {
+        oldRanges = getRanges();
+        oldTabs = getTabs();
+      }),
       // set selected tab
       flatMap(() => selectTab(2)),
-      // save tabs to compare at the end of the test
-      tap(() => oldTabs = getTabs()),
       // delete target tab
       flatMap(() => closeTab(2)),
     ).subscribe(() => {
