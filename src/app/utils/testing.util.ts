@@ -1,6 +1,6 @@
 import { ComponentFixture } from "@angular/core/testing";
 import { of, from, Observable, pipe } from "rxjs";
-import { map, tap, flatMap } from "../../../node_modules/rxjs/operators";
+import { map, tap, flatMap } from "rxjs/operators";
 
 export function executeAndDetectChanges(fixture: ComponentFixture<any>, fn: () => any): Observable<any> {
     return of(fn()).pipe(

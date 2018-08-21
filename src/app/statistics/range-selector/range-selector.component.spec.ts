@@ -3,7 +3,7 @@ import { Observable, timer } from 'rxjs';
 import { flatMap, tap, timeout } from 'rxjs/operators';
 
 import { RangeSelectorComponent, IRange } from './range-selector.component';
-import { DebugElement } from '../../../../node_modules/@angular/core';
+import { DebugElement } from '@angular/core';
 import { executeAndDetectChanges } from '../../utils/testing.util';
 
 describe('RangeSelectorComponent', () => {
