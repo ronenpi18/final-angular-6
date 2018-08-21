@@ -51,6 +51,10 @@ ul.tabs {
 }
 
 .options {
-    height: 6rem;
-    background: rgba(0,0,0,.2);
+    height: 4rem;
+}
+
+:host ::ng-deep .monitor-btn > button {
+    padding: 0 2rem;
+    height: 100%;
 }

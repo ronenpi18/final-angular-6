@@ -10,4 +10,18 @@
     </li>
 </ul>
 
-<div class="options"></div>
+<div class="options layout-row">
+    <!-- <div class="ui-inputgroup">
+        <button pButton type="button" icon="icon icon-calendar"></button>
+        <input type="text" pInputText placeholder="Keyword">
+    </div> -->
+
+    <span class="flex-grow"></span>
+
+    <p-button class="monitor-btn"
+              styleClass="ui-button-outlined"
+              label="היום"
+              (click)="selectTab(0)"
+              [disabled]="selectedTabIndex === 0">
+    </p-button>
+</div>

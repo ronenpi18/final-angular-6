@@ -8,7 +8,7 @@ body .ui-button {
     &.ui-corner-all {
         border-radius: 0px;
     }
-    // Transparent button style (ui-button-transparent)
+    // Transparent button style (.ui-button-transparent)
     &.ui-state-default.ui-button-transparent {
         color: #333333;
         background-color: transparent;
@@ -28,6 +28,30 @@ body .ui-button {
             background-color: #a0a0a0;
             color: #333333;
             border-color: #a0a0a0;
+        }
+    }
+    
+    // Outlined button style (.ui-button-outlined)
+    &.ui-state-default.ui-button-outlined {
+        color: rgba(0,0,0,.7);
+        background-color: transparent;
+        border: 1px solid rgba(0,0,0,.4);
+        transition: color .25s, border-color .25s;
+        border-radius: 4px;
+        
+        &:enabled:focus {
+            color: rgba(0,0,0,1);
+            border-color: rgba(0,0,0,.7);
+        }
+
+        &:enabled:hover {
+            color: rgba(0,0,0,1);
+            border-color: rgba(0,0,0,.7);
+        }
+
+        &:enabled:active {
+            color: rgba(0,0,0,1);
+            border-color: rgba(0,0,0,.7);
         }
     }
 }
