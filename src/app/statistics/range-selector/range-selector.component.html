@@ -1,0 +1,16 @@
+selectedTabIndex: {{selectedTabIndex}}
+ranges amount: {{ranges.length}}
+
+<ul class="tabs">
+    <li *ngFor="let range of ranges; let i = index"
+        [class.active]="i === selectedTabIndex"
+        (click)="selectTab(i)">
+        <span class="tab-title">{{getRangeLabel(range)}}</span>
+        <span class="icon icon-close close-btn" *ngIf="range.to" (click)="removeTab(i); $event.stopPropagation()"></span>
+    </li>
+    <li class="add-btn" (click)="addTab()">
+        <span class="icon icon-add"></span>
+    </li>
+</ul>
+
+<div class="options"></div>

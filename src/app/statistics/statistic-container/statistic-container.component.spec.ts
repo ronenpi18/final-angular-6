@@ -1,4 +1,4 @@
-import { Component, DebugElement, Host } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MenuModule } from 'primeng/menu';

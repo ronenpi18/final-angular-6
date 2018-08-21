@@ -1,0 +1,56 @@
+ul.tabs {
+    white-space: nowrap;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    border-bottom: 2px solid rgba(0,0,0,.4);
+
+    li {
+        margin-left: 2px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+        &:not(.add-btn) {
+            cursor: pointer;
+            min-width: 27rem;
+            padding: 2rem 2rem 2rem 1rem;
+            background: rgba(0,0,0,.05);
+            color: rgba(0,0,0,.4);
+            transition: color .25s;
+            &:not(.active):hover {
+                color: rgba(0,0,0,.87);
+            }
+        }
+        &.add-btn {
+            margin-right: 2rem;
+            .icon {
+                border: 1px solid rgba(0,0,0,.4);
+                color: rgba(0,0,0,.6);
+                border-radius: 3px;
+                padding: .5rem;
+                cursor: pointer;
+            }
+        }
+        .tab-title {
+            flex: 1;
+        }
+
+        .close-btn {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        &.active {
+            background: rgba(0,0,0,.8);
+            color: white;
+        }
+    }
+}
+
+.options {
+    height: 6rem;
+    background: rgba(0,0,0,.2);
+}

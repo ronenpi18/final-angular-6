@@ -6,6 +6,8 @@ import { GridStatistic } from './grid-statistic.model';
 import { MapComponent } from './components/map/map.component';
 import { StatusTimelineComponent } from './components/status-timeline/status-timeline.component';
 import { StatusDivisionsComponent } from './components/status-divisions/status-divisions.component';
+import { fromEvent } from 'rxjs';
+import { debounceTime, startWith, map } from '../../../node_modules/rxjs/operators';
 
 const mockPreset: GridStatistic[] = [
   new GridStatistic(StatusTimelineComponent, 1, 1),
@@ -23,9 +25,22 @@ const mockPreset: GridStatistic[] = [
 export class StatisticsComponent {
 
   preset: GridStatistic[];
+  gutterSize: number;
 
   constructor() {
     this.preset = mockPreset;
+    this.updateGutterSizeOnResize();
+  }
+  
+  // set gutter size based on viewport width and update on resize
+  private updateGutterSizeOnResize() {
+    fromEvent(window, 'resize').pipe(
+      debounceTime(100),
+      map((event: any) => event.target.innerWidth),
+      startWith(window.innerWidth)
+    ).subscribe((vw: number) => {
+      this.gutterSize = 1.04 / 100 * vw;
+    });
   }
 
 }

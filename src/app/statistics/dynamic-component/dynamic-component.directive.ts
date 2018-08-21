@@ -15,16 +15,11 @@ export class DynamicComponentDirective implements OnInit {
   
   ngOnInit() {
     this.component$.subscribe((component) => {
-      try {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-        const viewContainerRef = this.viewContainerRef;
-    
-        viewContainerRef.clear();
-        viewContainerRef.createComponent(componentFactory);
-      } catch (e) {
-        console.log(e);
-        debugger;
-      }
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+      const viewContainerRef = this.viewContainerRef;
+  
+      viewContainerRef.clear();
+      viewContainerRef.createComponent(componentFactory);
     });
   }
 

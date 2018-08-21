@@ -11,11 +11,11 @@ import { StatusTimelineComponent } from '../components/status-timeline/status-ti
 import { StatusDivisionsComponent } from '../components/status-divisions/status-divisions.component';
 
 const allComponents: StatisticsBaseComponent[] = [
-  EventsTableComponent,
+  StatusTimelineComponent,
+  StatusDivisionsComponent,
   LatencyGraphComponent,
   MapComponent,
-  StatusTimelineComponent,
-  StatusDivisionsComponent
+  EventsTableComponent
 ];
 
 interface IListItem {

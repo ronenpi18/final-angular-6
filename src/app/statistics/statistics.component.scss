@@ -2,6 +2,11 @@
     background: rgba(0,0,0,.1);
 }
 
-mat-grid-list {
-    margin: 2% 2% 0% 0;
+.container {
+    padding: 0 2rem 2rem 2rem;
+}
+
+app-statistics-range-selector {
+    display: block;
+    margin-bottom: 2rem;
 }

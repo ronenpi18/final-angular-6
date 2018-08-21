@@ -32,8 +32,65 @@ body .ui-button {
     }
 }
 
+/* CARD OVERRIDES */
 body .ui-card {
     &.ui-full-height {
         height: calc(100% - 2px);
+    }
+}
+
+/* TAB VIEW OVERRIDES */
+// TODO check real values with real design
+body .ui-tabview {
+    padding: 0;
+
+    .ui-tabview-nav {
+        margin-bottom: 0 !important;
+
+        li {
+            cursor: pointer;
+        }
+        li:not(.ui-shrink-tab) {
+            height: 6rem;
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border: 0 !important;
+            min-width: 27rem;
+            border-radius: 0;
+            margin-right: 0;
+            margin-left: .1rem;
+            top: 0;
+            
+            a {
+                padding: 0;
+                position: relative;
+                top: -.2rem;
+                flex: 1;
+            }
+
+            .ui-tabview-close {
+                font-size: 1.1rem;
+                line-height: 2rem;
+            }
+        }
+        li.ui-shrink-tab {
+            margin-right: 2rem;
+        }
+        li.add-btn {
+            display: flex;
+            align-items: center;
+            height: 3.5rem;
+            width: 3.5rem;
+            text-align: center;
+            border-radius: .5rem;
+            margin-top: 1.25rem;
+            a {
+                position: absolute;
+                top: calc(50% - .1rem);
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ import { CardModule } from 'primeng/card';
 import { StatisticsComponent } from './statistics.component';
 import { StatisticContainerComponent } from './statistic-container/statistic-container.component';
 import { DynamicComponentDirective } from './dynamic-component/dynamic-component.directive';
+import { RangeSelectorComponent } from './range-selector/range-selector.component';
 
 describe('StatisticsComponent', () => {
   let component: StatisticsComponent;
@@ -16,7 +17,8 @@ describe('StatisticsComponent', () => {
       declarations: [
         StatisticsComponent,
         StatisticContainerComponent,
-        DynamicComponentDirective
+        DynamicComponentDirective,
+        RangeSelectorComponent
       ],
       imports: [
         MatGridListModule,

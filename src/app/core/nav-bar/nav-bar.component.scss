@@ -1,4 +1,5 @@
 nav {
+    height: 6rem;
     background: white;
 }
 
@@ -14,11 +15,12 @@ nav {
 }
 
 p-button {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
 }
 
 .minute-clock, .day-clock {
     margin-left: 3rem;
+    font-size: 1.6rem;
 }
 
 // buttons wider, affecting button inside p-button component

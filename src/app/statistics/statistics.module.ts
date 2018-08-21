@@ -4,6 +4,7 @@ import { CardModule } from 'primeng/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
+import { TabViewModule } from 'primeng/tabview';
 
 import { StatisticsComponent } from './statistics.component';
 import { LatencyGraphComponent } from './components/latency-graph/latency-graph.component';
@@ -13,6 +14,7 @@ import { StatisticContainerComponent } from './statistic-container/statistic-con
 import { MapComponent } from './components/map/map.component';
 import { StatusTimelineComponent } from './components/status-timeline/status-timeline.component';
 import { StatusDivisionsComponent } from './components/status-divisions/status-divisions.component';
+import { RangeSelectorComponent } from './range-selector/range-selector.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { StatusDivisionsComponent } from './components/status-divisions/status-d
     CardModule,
     MatGridListModule,
     ButtonModule,
-    MenuModule
+    MenuModule,
+    TabViewModule
   ],
   declarations: [
     StatisticsComponent,
@@ -30,7 +33,8 @@ import { StatusDivisionsComponent } from './components/status-divisions/status-d
     StatisticContainerComponent,
     MapComponent,
     StatusTimelineComponent,
-    StatusDivisionsComponent
+    StatusDivisionsComponent,
+    RangeSelectorComponent
   ],
   entryComponents: [
     LatencyGraphComponent,

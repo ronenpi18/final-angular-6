@@ -9,14 +9,30 @@ body {
     height: 100%;
 }
 
-@media only screen and (max-width: 800px) {
-    html {
-        font-size: 6px;
-    }
+@media only screen and (min-width: 3840px) {
+    html { font-size: 11px; }
 }
 
-@media only screen and (min-width: 2048px) {
-    html {
-        font-size: 14px;
-    }
+@media only screen and (min-width: 1920px) and (max-width: 3839px) {
+    html { font-size: 10px; }
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1919px) {
+    html { font-size: 9.5px }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1679px) {
+    html { font-size: 9px; }
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1439px) {
+    html { font-size: 8.5px; }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+    html { font-size: 8px; }
+}
+
+@media only screen and (max-width: 1023px) {
+    html { font-size: 7.5px; }
 }

@@ -1,12 +1,16 @@
-<mat-grid-list class="flex-grow" cols="2" rows="3" rowHeight="fit" gutterSize="2%">
-  <mat-grid-tile
-      *ngFor="let statistic of preset"
-      [colspan]="statistic.cols"
-      [rowspan]="statistic.rows">
+<div class="container full-size layout-column">
+  <app-statistics-range-selector></app-statistics-range-selector>
 
-    <app-statistic-container class="full-size" [statistic]="statistic">
-      <ng-template [appDynamicComponent]="statistic.component$"></ng-template>
-    </app-statistic-container>
+  <mat-grid-list class="flex-grow" cols="2" rows="3" rowHeight="fit" gutterSize="2rem">
+    <mat-grid-tile
+        *ngFor="let statistic of preset"
+        [colspan]="statistic.cols"
+        [rowspan]="statistic.rows">
 
-  </mat-grid-tile>
-</mat-grid-list>
+      <app-statistic-container class="full-size" [statistic]="statistic">
+        <ng-template [appDynamicComponent]="statistic.component$"></ng-template>
+      </app-statistic-container>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

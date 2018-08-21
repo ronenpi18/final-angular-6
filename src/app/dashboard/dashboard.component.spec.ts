@@ -10,6 +10,7 @@ import { RealTimeComponent } from '../real-time/real-time.component';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { StatisticContainerComponent } from '../statistics/statistic-container/statistic-container.component';
 import { DynamicComponentDirective } from '../statistics/dynamic-component/dynamic-component.directive';
+import { RangeSelectorComponent } from '../statistics/range-selector/range-selector.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -23,7 +24,8 @@ describe('DashboardComponent', () => {
         RealTimeComponent,
         StatisticsComponent,
         StatisticContainerComponent,
-        DynamicComponentDirective
+        DynamicComponentDirective,
+        RangeSelectorComponent
       ],
       imports: [
         MatGridListModule,

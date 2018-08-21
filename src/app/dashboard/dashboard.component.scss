@@ -1,10 +1,11 @@
 app-statistics {
     display: flex;
+    overflow: hidden;
 }
 
 .moving-panel {
     position: relative;
-    flex-basis: 45rem;
+    flex-basis: 33.02%;
 
     .moving-panel-content {
         z-index: 2;
