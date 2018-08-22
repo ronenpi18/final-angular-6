@@ -1,9 +1,9 @@
 <ul class="tabs">
-    <li *ngFor="let range of ranges; let i = index"
-        [class.active]="i === selectedTabIndex"
-        (click)="selectTab(i)">
+    <li *ngFor="let range of ranges$ | async"
+        [class.active]="range === activeRange$ | async"
+        (click)="selectTab(range)">
         <span class="tab-title">{{getRangeLabel(range)}}</span>
-        <span class="icon icon-close close-btn" *ngIf="range.to" (click)="removeTab(i); $event.stopPropagation()"></span>
+        <span class="icon icon-close close-btn" *ngIf="range.to" (click)="removeTab(range); $event.stopPropagation()"></span>
     </li>
     <li class="add-btn" (click)="addTab()">
         <span class="icon icon-add"></span>

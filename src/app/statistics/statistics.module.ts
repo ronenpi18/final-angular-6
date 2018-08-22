@@ -4,7 +4,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
-import { TabViewModule } from 'primeng/tabview';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -26,7 +25,6 @@ import { reducers, effects } from './state';
     CardModule,
     ButtonModule,
     MenuModule,
-    TabViewModule,
     StoreModule.forFeature('statistics', reducers),
     EffectsModule.forFeature(effects)
   ],

@@ -1,10 +1,7 @@
-import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/core';
-import { TabView } from 'primeng/tabview';
+import { Component, Renderer2, ElementRef, Input, EventEmitter, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 
-export interface IRange {
-  from: Date,
-  to?: Date
-}
+import { IRangeInstance } from '../models/range.model';
 
 const MINUTE = 1000 * 60;
 const HOUR = MINUTE * 60;
@@ -28,44 +25,31 @@ const mockRanges = [{
 })
 export class RangeSelectorComponent {
 
-  ranges: IRange[] = [{
-    from: new Date(Date.now() - MINUTE * 10)
-  }];
-  selectedTabIndex = 0;
+  @Input() ranges$: Observable<IRangeInstance[]>;
+  @Input() activeRange$: Observable<IRangeInstance>;
+  
+  @Output() rangeAdd = new EventEmitter<IRangeInstance>();
+  @Output() rangeRemove = new EventEmitter<IRangeInstance>();
+  @Output() rangeSelect = new EventEmitter<IRangeInstance>();
 
-  constructor(
-    private renderer: Renderer2,
-    private el: ElementRef
-  ) {}
+  constructor() {}
 
-  selectTab(index: number) {
-    this.selectedTabIndex = index;
+  selectTab(range: IRangeInstance) {
+    this.rangeSelect.emit(range);
   }
 
   addTab() {
-    const mockRange = mockRanges[this.ranges.length - 1] || mockRanges[mockRanges.length - 1];
-    const mockCopy = { from: mockRange.from, to: mockRange.to };
-    // when pushing a new tab, it get's selected by default
-    this.ranges = [...this.ranges, mockCopy];
-
-    // select added tab
-    this.selectedTabIndex = this.ranges.length - 1;
+    // const mockRange = mockRanges[this.ranges.length - 1] || mockRanges[mockRanges.length - 1];
+    const mockRange = mockRanges[1];
+    const mockCopy: IRangeInstance = { from: mockRange.from, to: mockRange.to };
+    this.rangeAdd.emit(mockCopy);
   }
 
-  removeTab(index: number) {
-    this.ranges = this.ranges.slice(0, index).concat(this.ranges.slice(index + 1));
-
-    if (index > this.selectedTabIndex) {
-      return;
-    } else if (index !== this.selectedTabIndex) {
-      this.selectedTabIndex -= 1;
-    } else {
-      // select previous tab
-      this.selectedTabIndex = index - 1;
-    }
+  removeTab(range: IRangeInstance) {
+    this.rangeRemove.emit(range);
   }
 
-  getRangeLabel(range: IRange) {
+  getRangeLabel(range: IRangeInstance) {
     if (!range.to) return 'עכשיו';
     return `${this.getDayLabel(range.from)} - ${this.getDayLabel(range.to)}`
   }

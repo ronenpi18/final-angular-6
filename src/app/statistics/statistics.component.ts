@@ -11,6 +11,7 @@ import { GridStatistic } from './grid-statistic.model';
 import { MapComponent } from './components/map/map.component';
 import { StatusTimelineComponent } from './components/status-timeline/status-timeline.component';
 import { StatusDivisionsComponent } from './components/status-divisions/status-divisions.component';
+import { IRangeInstance } from './models/range.model';
 
 const mockPreset: GridStatistic[] = [
   new GridStatistic(StatusTimelineComponent, 1, 1),
@@ -28,6 +29,9 @@ const mockPreset: GridStatistic[] = [
 export class StatisticsComponent implements OnInit {
 
   data$: Observable<IStatisticsInstance[]>;
+  ranges$: Observable<IRangeInstance[]>;
+  activeRange$: Observable<IRangeInstance>;
+
   preset: GridStatistic[];
   gutterSize: number;
 
@@ -36,11 +40,24 @@ export class StatisticsComponent implements OnInit {
     this.updateGutterSizeOnResize();
   }
 
-  ngOnInit() {
+  ngOnInit() {    
+    this.data$ = this.store.select(fromStore.getAllData);
+    this.ranges$ = this.store.select(fromStore.getRanges);
+    this.activeRange$ = this.store.select(fromStore.getActiveRange);
+
     this.store.dispatch(new fromStore.LoadData());
-  
-    this.data$ = this.store.select(fromStore.getAllData);  
-    this.data$.subscribe(data => console.log(data));
+  }
+
+  onRangeAdd(range: IRangeInstance) {
+    this.store.dispatch(new fromStore.RangeAdd(range));
+  }
+
+  onRangeRemove(range: IRangeInstance) {
+    this.store.dispatch(new fromStore.RangeRemove(range));
+  }
+
+  onRangeSelect(range: IRangeInstance) {
+    this.store.dispatch(new fromStore.ActiveRangeChange(range));
   }
   
   // set gutter size based on viewport width and update on resize

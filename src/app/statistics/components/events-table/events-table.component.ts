@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 
-import { IStatisticsInstance } from '../../models/data.model';
 import { StatisticDynamicInput } from '../component.model';
 
 @Component({

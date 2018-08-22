@@ -1,5 +1,11 @@
 <div class="container full-size layout-column">
-  <app-statistics-range-selector></app-statistics-range-selector>
+  <app-statistics-range-selector
+    [ranges$]="ranges$"
+    [activeRange$]="activeRange$"
+    (rangeAdd)="onRangeAdd($event)"
+    (rangeRemove)="onRangeRemove($event)"
+    (rangeSelect)="onRangeSelect($event)">
+  </app-statistics-range-selector>
 
   <mat-grid-list class="flex-grow" cols="2" rows="3" rowHeight="fit" gutterSize="2rem">
     <mat-grid-tile
