@@ -8,7 +8,10 @@
         [rowspan]="statistic.rows">
 
       <app-statistic-container class="full-size" [statistic]="statistic">
-        <ng-template [appDynamicComponent]="statistic.component$"></ng-template>
+        <ng-template
+          [appDynamicComponent]="statistic.component$"
+          [data]="data$">
+        </ng-template>
       </app-statistic-container>
 
     </mat-grid-tile>

@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class DynamicComponentDirective implements OnInit {
 
   @Input('appDynamicComponent') component$: Subject<any>;
+  @Input() data: any;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -19,7 +20,8 @@ export class DynamicComponentDirective implements OnInit {
       const viewContainerRef = this.viewContainerRef;
   
       viewContainerRef.clear();
-      viewContainerRef.createComponent(componentFactory);
+      const componentRef = viewContainerRef.createComponent(componentFactory);
+      (componentRef.instance as any).data = this.data;
     });
   }
 

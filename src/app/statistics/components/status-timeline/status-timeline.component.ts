@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { StatisticDynamicInput } from '../component.model';
 
 @Component({
   selector: 'app-status-timeline',
   templateUrl: './status-timeline.component.html',
   styleUrls: ['./status-timeline.component.scss']
 })
-export class StatusTimelineComponent {
+export class StatusTimelineComponent extends StatisticDynamicInput {
 
   static type = 'graph';
   static typeIcon = 'stats';
@@ -14,6 +15,8 @@ export class StatusTimelineComponent {
   static closable = false;
   static changeable = true;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
 }

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { StatisticDynamicInput } from '../component.model';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent {
+export class MapComponent extends StatisticDynamicInput {
 
   static type = 'data';
   static title = 'מפה';
@@ -13,6 +14,8 @@ export class MapComponent {
   static closable = true;
   static changeable = false;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
 }
