@@ -37,7 +37,6 @@ export class StatisticsComponent implements OnInit {
 
   constructor(private store: Store<fromStore.StatisticsState>) {
     this.preset = mockPreset;
-    this.updateGutterSizeOnResize();
   }
 
   ngOnInit() {    
@@ -58,17 +57,6 @@ export class StatisticsComponent implements OnInit {
 
   onRangeSelect(range: IRangeInstance) {
     this.store.dispatch(new fromStore.ActiveRangeChange(range));
-  }
-  
-  // set gutter size based on viewport width and update on resize
-  private updateGutterSizeOnResize() {
-    fromEvent(window, 'resize').pipe(
-      debounceTime(100),
-      map((event: any) => event.target.innerWidth),
-      startWith(window.innerWidth)
-    ).subscribe((vw: number) => {
-      this.gutterSize = 1.04 / 100 * vw;
-    });
   }
 
 }

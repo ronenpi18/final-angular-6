@@ -1,5 +1,6 @@
-import { Component, Renderer2, ElementRef, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, withLatestFrom, take } from 'rxjs/operators';
 
 import { IRangeInstance } from '../models/range.model';
 
@@ -34,28 +35,57 @@ export class RangeSelectorComponent {
 
   constructor() {}
 
-  selectTab(range: IRangeInstance) {
+  selectRange(range: IRangeInstance): void {
     this.rangeSelect.emit(range);
   }
 
-  addTab() {
+  isRangeActive(range: IRangeInstance): Observable<boolean> {
+    return this.activeRange$.pipe(
+      map(activeRange => activeRange === range)
+    );
+  }
+
+  isLiveRangeActive(): Observable<boolean> {
+    const liveRange$ = this.ranges$.pipe(
+      map(ranges => ranges[0])
+    );
+    // combine active range stream with live range stream and check they are the same
+    return this.activeRange$.pipe(
+      withLatestFrom(liveRange$),
+      map(([activeRange, liveRange]) => activeRange === liveRange)
+    );
+  }
+
+  getMonitorLabel(): Observable<string> {
+    return this.isLiveRangeActive().pipe(
+      map(isLiveActive => isLiveActive ? 'ניטור' : 'היום')
+    );
+  }
+
+  selectActiveTab(): void {
+    this.ranges$.pipe(
+      take(1)
+    ).subscribe(ranges => this.selectRange(ranges[0]))
+  }
+
+  addTab(): void {
     // const mockRange = mockRanges[this.ranges.length - 1] || mockRanges[mockRanges.length - 1];
     const mockRange = mockRanges[1];
     const mockCopy: IRangeInstance = { from: mockRange.from, to: mockRange.to };
     this.rangeAdd.emit(mockCopy);
   }
 
-  removeTab(range: IRangeInstance) {
+  removeTab(range: IRangeInstance): void {
     this.rangeRemove.emit(range);
   }
 
-  getRangeLabel(range: IRangeInstance) {
+  getRangeLabel(range: IRangeInstance): string {
     if (!range.to) return 'עכשיו';
     return `${this.getDayLabel(range.from)} - ${this.getDayLabel(range.to)}`
   }
   
-  getDayLabel(date: Date) {
-    return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+  getDayLabel(date: Date): string {
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
   }
 
 }

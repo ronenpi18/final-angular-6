@@ -1,7 +1,7 @@
 <ul class="tabs">
     <li *ngFor="let range of ranges$ | async"
-        [class.active]="range === activeRange$ | async"
-        (click)="selectTab(range)">
+        [class.active]="isRangeActive(range) | async"
+        (click)="selectRange(range)">
         <span class="tab-title">{{getRangeLabel(range)}}</span>
         <span class="icon icon-close close-btn" *ngIf="range.to" (click)="removeTab(range); $event.stopPropagation()"></span>
     </li>
@@ -20,8 +20,8 @@
 
     <p-button class="monitor-btn"
               styleClass="ui-button-outlined"
-              label="היום"
-              (click)="selectTab(0)"
-              [disabled]="selectedTabIndex === 0">
+              [label]="getMonitorLabel() | async"
+              (click)="selectActiveTab()"
+              [disabled]="isLiveRangeActive() | async">
     </p-button>
 </div>

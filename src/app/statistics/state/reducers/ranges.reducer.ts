@@ -44,7 +44,7 @@ export function reducer(
                 activeRangeIndex = state.activeRangeIndex;
             } else if (targetInstanceIndex !== state.activeRangeIndex) {
                 // if removing tab before selected tab, move the active index to -1
-                activeRangeIndex -= 1;
+                activeRangeIndex = state.activeRangeIndex - 1;
             } else {
                 // if removing selected tab, select previous tab
                 activeRangeIndex = targetInstanceIndex - 1;
@@ -52,7 +52,10 @@ export function reducer(
 
             return {
                 ...state,
-                instances: [...state.instances.slice(0, targetInstanceIndex), ...state.instances.slice(targetInstanceIndex + 1)],
+                instances: [
+                    ...state.instances.slice(0, targetInstanceIndex), 
+                    ...state.instances.slice(targetInstanceIndex + 1)
+                ],
                 activeRangeIndex
             }
         }
