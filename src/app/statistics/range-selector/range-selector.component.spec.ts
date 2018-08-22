@@ -1,10 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, timer } from 'rxjs';
 import { flatMap, tap, timeout } from 'rxjs/operators';
-
-import { RangeSelectorComponent, IRange } from './range-selector.component';
+import { ButtonModule } from 'primeng/button';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { DebugElement } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { RangeSelectorComponent } from './range-selector.component';
+import { IRangeInstance } from '../models/range.model';
 import { executeAndDetectChanges } from '../../utils/testing.util';
+import { reducers, effects } from '../state';
 
 describe('RangeSelectorComponent', () => {
   let component: RangeSelectorComponent;
@@ -14,7 +20,15 @@ describe('RangeSelectorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RangeSelectorComponent ]
+      declarations: [ RangeSelectorComponent ],
+      imports: [
+        HttpClientModule,
+        StoreModule.forRoot({}, {}), // metaReducers
+        StoreModule.forFeature('statistics', reducers),
+        EffectsModule.forRoot([]),
+        EffectsModule.forFeature(effects),
+        ButtonModule
+      ]
     })
     .compileComponents();
   }));
@@ -28,9 +42,11 @@ describe('RangeSelectorComponent', () => {
   });
 
   it('should create new tab', () => {
+    debugger;
     const oldTabsCount = getTabs().length;
     // create tabs
     createRanges(1).subscribe(() => {
+      debugger;
       expect(getTabs().length).toBe(oldTabsCount + 1);
     });
   });
@@ -55,9 +71,9 @@ describe('RangeSelectorComponent', () => {
     // create tabs
     createRanges(3).pipe(
       // save state to compare at the end of the test
-      tap(() => {
-        oldRanges = getRanges();
+      flatMap(() => {
         oldTabs = getTabs();
+        return getRanges().pipe(tap(ranges => oldRanges = ranges));
       }),
       // set selected tab
       flatMap(() => selectTab(2)),
@@ -80,9 +96,9 @@ describe('RangeSelectorComponent', () => {
     // create tabs
     createRanges(3).pipe(
       // save state to compare at the end of the test
-      tap(() => {
-        oldRanges = getRanges();
+      flatMap(() => {
         oldTabs = getTabs();
+        return getRanges().pipe(tap(ranges => oldRanges = ranges));
       }),
       // set selected tab
       flatMap(() => selectTab(2)),
@@ -105,9 +121,9 @@ describe('RangeSelectorComponent', () => {
     // create tabs
     createRanges(3).pipe(
       // save state to compare at the end of the test
-      tap(() => {
-        oldRanges = getRanges();
+      flatMap(() => {
         oldTabs = getTabs();
+        return getRanges().pipe(tap(ranges => oldRanges = ranges));
       }),
       // set selected tab
       flatMap(() => selectTab(2)),
@@ -124,14 +140,16 @@ describe('RangeSelectorComponent', () => {
   });
 
   it('should not be close button on live tab', () => {
-    const liveTabIndex = getRanges().findIndex(range => !range.to);
-    const liveTabEl = getTabs()[liveTabIndex];
-    const liveTabCloseBtnEl = liveTabEl.querySelector('.close-btn');
-    expect(liveTabCloseBtnEl).toBeNull();
+    getRanges().subscribe(ranges => {
+      const liveTabIndex = ranges.findIndex(range => !range.to);
+      const liveTabEl = getTabs()[liveTabIndex];
+      const liveTabCloseBtnEl = liveTabEl.querySelector('.close-btn');
+      expect(liveTabCloseBtnEl).toBeNull();
+    });
   });
 
-  function getRanges(): IRange[] {
-    return component.ranges;
+  function getRanges(): Observable<IRangeInstance[]> {
+    return component.ranges$;
   }
 
   function getTabs(): any[] {
@@ -154,12 +172,12 @@ describe('RangeSelectorComponent', () => {
     return htmlChange(() => {
       const day = 1000 * 60 * 60 * 24;
       const startDate = new Date(2018, 7, 23, 7, 30, 12);
-      const tabs: IRange[] = Array(amount).fill(null).map((take, index) => ({
+      const ranges: IRangeInstance[] = Array(amount).fill(null).map((take, index) => ({
         from: new Date(startDate.getTime() - (day * 2 - 1) * index),
         to: new Date(startDate.getTime() - day * 2 * index)
       }));
 
-      component.ranges = component.ranges.concat(tabs);
+      ranges.forEach(range => component.addRange(range));
     });
   }
 });

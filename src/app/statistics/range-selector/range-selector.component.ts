@@ -39,6 +39,28 @@ export class RangeSelectorComponent {
     this.rangeSelect.emit(range);
   }
 
+  selectActiveTab(): void {
+    this.ranges$
+      .pipe(take(1))
+      .subscribe(ranges => this.selectRange(ranges[0]));
+  }
+
+  addTab(): void {
+    // const mockRange = mockRanges[this.ranges.length - 1] || mockRanges[mockRanges.length - 1];
+    const mockRange = mockRanges[1];
+    const mockCopy: IRangeInstance = { from: mockRange.from, to: mockRange.to };
+    this.addRange(mockCopy);
+  }
+
+  addRange(range: IRangeInstance): void {
+    debugger;
+    this.rangeAdd.emit(range);
+  }
+
+  removeTab(range: IRangeInstance): void {
+    this.rangeRemove.emit(range);
+  }
+
   isRangeActive(range: IRangeInstance): Observable<boolean> {
     return this.activeRange$.pipe(
       map(activeRange => activeRange === range)
@@ -60,23 +82,6 @@ export class RangeSelectorComponent {
     return this.isLiveRangeActive().pipe(
       map(isLiveActive => isLiveActive ? 'ניטור' : 'היום')
     );
-  }
-
-  selectActiveTab(): void {
-    this.ranges$.pipe(
-      take(1)
-    ).subscribe(ranges => this.selectRange(ranges[0]))
-  }
-
-  addTab(): void {
-    // const mockRange = mockRanges[this.ranges.length - 1] || mockRanges[mockRanges.length - 1];
-    const mockRange = mockRanges[1];
-    const mockCopy: IRangeInstance = { from: mockRange.from, to: mockRange.to };
-    this.rangeAdd.emit(mockCopy);
-  }
-
-  removeTab(range: IRangeInstance): void {
-    this.rangeRemove.emit(range);
   }
 
   getRangeLabel(range: IRangeInstance): string {
