@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { StatisticDynamicInput } from '../component.model';
 
 @Component({
   selector: 'app-latency-graph',
   templateUrl: './latency-graph.component.html',
   styleUrls: ['./latency-graph.component.scss']
 })
-export class LatencyGraphComponent {
+export class LatencyGraphComponent extends StatisticDynamicInput {
 
   static type = 'graph';
   static typeIcon = 'graph-area';
@@ -14,5 +16,7 @@ export class LatencyGraphComponent {
   static closable = false;
   static changeable = true;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 }
