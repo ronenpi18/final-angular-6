@@ -2,6 +2,7 @@ import { ActionReducerMap, createFeatureSelector, createSelector } from "@ngrx/s
 
 import * as fromData from  "./data.reducer";
 import * as fromRanges from  "./ranges.reducer";
+import { localStorageMiddleware } from "../../../utils/ngrx.util";
 
 export interface StatisticsState {
     data: fromData.DataState,
@@ -10,7 +11,7 @@ export interface StatisticsState {
 
 export const reducers: ActionReducerMap<StatisticsState> = {
     data: fromData.reducer,
-    ranges: fromRanges.reducer
+    ranges: localStorageMiddleware('statistics-ranges', fromRanges.reducer, fromRanges.localParser)
 };
 
 export const getStatisticsState = createFeatureSelector<StatisticsState>(

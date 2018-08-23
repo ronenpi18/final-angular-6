@@ -63,5 +63,16 @@ export function reducer(
     return state;
 }
 
+export function localParser(state: RangesState) {
+    return {
+        ...state,
+        instances: state.instances.map(instance => ({
+            ...instance,
+            from: new Date(instance.from),
+            to: instance.to ? new Date(instance.to) : undefined
+        }))
+    };
+}
+
 export const getRanges = (state: RangesState) => state.instances;
 export const getActiveRange = (state: RangesState) => state.instances[state.activeRangeIndex];
