@@ -5,6 +5,7 @@ import { CardModule } from 'primeng/card';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 import { reducers, effects } from '../statistics/state';
 import { DashboardComponent } from './dashboard.component';
@@ -35,6 +36,7 @@ describe('DashboardComponent', () => {
         MatGridListModule,
         MenuModule,
         CardModule,
+        ButtonModule,
         StoreModule.forRoot({}, {}), // metaReducers
         StoreModule.forFeature('statistics', reducers),
         EffectsModule.forRoot([]),

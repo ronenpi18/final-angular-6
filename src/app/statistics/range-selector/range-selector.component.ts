@@ -53,7 +53,6 @@ export class RangeSelectorComponent {
   }
 
   addRange(range: IRangeInstance): void {
-    debugger;
     this.rangeAdd.emit(range);
   }
 
