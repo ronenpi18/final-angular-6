@@ -1,3 +1,25 @@
-<p>
-  family-selector works!
-</p>
+<section class="search layout-row vertical-center-items">
+
+  <span class="filter-btn icon icon-filter"></span>
+
+  <div class="search-input flex-grow">
+    <span class="icon icon-settings"></span>
+    <input type="text" placeholder="חיפוש" pInputText />
+  </div>
+
+</section>
+
+<ul>
+  <li *ngFor="let family of families$ | async">
+    Family: {{family.name}}
+    <ul>
+      <li *ngFor="let process of family.processes">
+        <a [routerLink]="['/families', family.fullId, 'processes', process.fullId]">
+          <button>
+            {{process.name}}
+          </button>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>

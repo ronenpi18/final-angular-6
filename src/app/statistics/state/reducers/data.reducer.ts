@@ -1,5 +1,6 @@
 import * as fromData from '../actions/data.action';
 import { IStatisticsInstance } from '../../models/data.model';
+import { convertToEntities } from '../../../utils/ngrx.util';
 
 export interface DataState {
     entities: { [id: number]: IStatisticsInstance };
@@ -36,17 +37,7 @@ export function reducer(
 
         case fromData.LOAD_DATA_SUCCESS: {
             const instances = action.payload;
-            const entities = instances.reduce(
-                (entities: { [id: number]: IStatisticsInstance }, instance: IStatisticsInstance) => {
-                    return {
-                        ...entities,
-                        [instance.fullId]: instance
-                    }
-                },
-                {
-                    ...state.entities
-                }
-            );
+            const entities = convertToEntities<IStatisticsInstance>('fullId', instances, state.entities);
 
             return {
                 ...state,

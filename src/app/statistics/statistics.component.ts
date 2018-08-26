@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
-import { debounceTime, startWith, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+
 import * as fromStore from './state';
 import { IStatisticsInstance } from './models/data.model';
-
 import { EventsTableComponent } from './components/events-table/events-table.component';
 import { LatencyGraphComponent } from './components/latency-graph/latency-graph.component';
 import { GridStatistic } from './grid-statistic.model';
@@ -39,7 +38,7 @@ export class StatisticsComponent implements OnInit {
     this.preset = mockPreset;
   }
 
-  ngOnInit() {    
+  ngOnInit() {   
     this.data$ = this.store.select(fromStore.getAllData);
     this.ranges$ = this.store.select(fromStore.getRanges);
     this.activeRange$ = this.store.select(fromStore.getActiveRange);

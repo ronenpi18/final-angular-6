@@ -8,7 +8,7 @@
     (rangeSelect)="onRangeSelect($event)">
   </app-statistics-range-selector>
 
-  <mat-grid-list class="flex-grow" cols="2" rows="3" rowHeight="fit" gutterSize="2rem">
+  <mat-grid-list class="statistics-grid flex-grow" cols="2" rows="3" rowHeight="fit" gutterSize="2rem">
     <mat-grid-tile
         *ngFor="let statistic of preset"
         [colspan]="statistic.cols"

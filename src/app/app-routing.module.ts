@@ -3,14 +3,14 @@ import { Routes, RouterModule, Router } from '@angular/router';
 
 const routes: Routes = [
     {
-      path: '',
+      path: 'families/:familyId/processes/:processId',
       pathMatch: 'full',
       loadChildren: './dashboard/dashboard.module#DashboardModule'
     },
     {
       path: '**',
       pathMatch: 'full',
-      redirectTo: ''
+      redirectTo: 'families/1/processes/100'
     }
   ];
 

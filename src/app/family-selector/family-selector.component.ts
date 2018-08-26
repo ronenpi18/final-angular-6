@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as fromStore from './state';
+import { Observable } from '../../../node_modules/rxjs';
+import { IFamilyInstance } from './models/family.model';
 
 @Component({
   selector: 'app-family-selector',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FamilySelectorComponent implements OnInit {
 
-  constructor() { }
+  families$: Observable<IFamilyInstance[]>;
 
-  ngOnInit() {
+  constructor(private store: Store<fromStore.FamiliesState>) {
+
+  }
+
+  ngOnInit() {    
+    this.families$ = this.store.select(fromStore.getAllFamilies);
+
+    this.store.dispatch(new fromStore.LoadFamilies());
   }
 
 }

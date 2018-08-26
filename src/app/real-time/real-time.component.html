@@ -1,3 +1,6 @@
-<p>
-  real-time works!
-</p>
+<div *ngIf="process$ | async">
+  <p>
+    real-time works!
+    {{(process$ | async).name}}
+  </p>
+</div>
