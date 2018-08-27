@@ -7,6 +7,7 @@ import { CardModule } from 'primeng/card';
 import { RealTimeComponent } from './real-time.component';
 import { reducers, effects } from './state';
 import { AlertsComponent } from './alerts/alerts.component';
+import { TracesComponent } from './traces/traces.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { AlertsComponent } from './alerts/alerts.component';
     EffectsModule.forFeature(effects),
     CardModule
   ],
-  declarations: [RealTimeComponent, AlertsComponent],
+  declarations: [RealTimeComponent, AlertsComponent, TracesComponent],
   exports: [RealTimeComponent]
 })
 export class RealTimeModule { }

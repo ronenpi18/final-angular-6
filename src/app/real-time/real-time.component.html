@@ -16,7 +16,10 @@
     </div>
   </section>
 
-  <span class="flex-grow"></span>
+  <app-real-time-traces
+    class="flex-grow"
+    [traces$]="traces$">
+  </app-real-time-traces>
 
   <!-- alerts -->
   <app-real-time-alerts

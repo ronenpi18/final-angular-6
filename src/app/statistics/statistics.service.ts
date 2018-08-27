@@ -17,9 +17,9 @@ export class StatisticsService {
 
   getData(familyId: string, processId: string, range: IRangeInstance): Observable<IStatisticsInstance[]> {
     return this.http
-      .get<IStatisticsInstance>('//5b755724deca780014ec9f65.mockapi.io/api/data')
+      .get<{a: IStatisticsInstance[]}>('//5b755724deca780014ec9f65.mockapi.io/api/data/1')
       .pipe(
-        map(data => data[0].instances),
+        map(data => data.a),
         catchError((error: any) => Observable.throw(error.json()))
       );
   }

@@ -13,4 +13,5 @@ export class GlobalsProvider {
 
     realTimeRange = minute * 10
     updateRealTimeAlertsInterval = 5000;
+    updateRealTimeTracesInterval = 5000;
 }
