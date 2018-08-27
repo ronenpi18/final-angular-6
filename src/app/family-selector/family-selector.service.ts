@@ -18,7 +18,7 @@ export class FamilySelectorService {
     return this.http
       .get<{a: IFamilyInstance[]}>('//5b755724deca780014ec9f65.mockapi.io/api/families/1')
       .pipe(
-        map(data => data.a),
+        map(({ a }) => a),
         catchError((error: any) => Observable.throw(error.json()))
       );
   }

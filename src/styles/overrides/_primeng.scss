@@ -61,6 +61,9 @@ body .ui-card {
     &.ui-full-height {
         height: calc(100% - 2px);
     }
+    .ui-card-body {
+        padding: 1.5rem;
+    }
 }
 
 /* TAB VIEW OVERRIDES */
@@ -117,4 +120,8 @@ body .ui-tabview {
             }
         }
     }
+}
+
+body .ui-corner-all {
+    border-radius: .3rem;
 }

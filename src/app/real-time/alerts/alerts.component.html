@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="header layout-row vertical-center-items">
+    <span class="icon icon-alert"></span>
+    <h4>התראות</h4>
+    <span class="flex-grow"></span>
+    <span class="icon icon-close clear-btn"></span>
+  </div>
+  
+  <p-card *ngFor="let alert of alerts$ | async" class="alert">
+
+    <p-header class="layout-row vertical-center-items">
+      <span class="icon icon-warning status-icon"></span>
+      <small>{{alert.alertHeader}}</small>
+      <span class="flex-grow"></span>
+      <small class="time">היום, 12:46:33</small>
+    </p-header>
+
+    <div class="layout-row vertical-center-items">
+      <span class="icon icon-speedometer alert-icon"></span>
+      <div>
+        <p class="body">{{alert.alertBody}}</p>
+        <ul class="details">
+          <li>
+            <span class="status-dot"></span>
+            <span class="property">סף צהוב:</span>
+            <span class="value"><b>99%</b></span>
+          </li>
+          <li>
+            <span class="status-dot"></span>
+            <span class="property">סף אדום:</span>
+            <span class="value"><b>15s</b></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </p-card>
+</div>

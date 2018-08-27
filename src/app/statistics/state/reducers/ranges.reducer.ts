@@ -1,6 +1,9 @@
 import * as fromRanges from '../actions/ranges.action';
 import { IRangeInstance } from '../../models/range.model';
 
+// live range should always start before 10 minutes
+const liveBeforeTime = 1000 * 60 * 10;
+
 export type RangesState = {
     instances: IRangeInstance[];
     activeRangeIndex: number;
@@ -8,7 +11,7 @@ export type RangesState = {
 
 export const initialState: RangesState = {
     instances: [{
-        from: new Date(Date.now() - 1000 * 60 * 10)
+        from: new Date(Date.now() - liveBeforeTime)
     }],
     activeRangeIndex: 0
 };
@@ -57,6 +60,19 @@ export function reducer(
                     ...state.instances.slice(targetInstanceIndex + 1)
                 ],
                 activeRangeIndex
+            }
+        }
+
+        case fromRanges.UPDATE_LIVE_RANGE: {
+            return {
+                ...state,
+                instances: state.instances.map(instance => {
+                    if (instance.to) return instance;
+                    return {
+                        ...instance,
+                        from: new Date(Date.now() - liveBeforeTime)
+                    };
+                })
             }
         }
     }

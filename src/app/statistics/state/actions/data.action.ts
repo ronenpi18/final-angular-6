@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import { IStatisticsInstance } from '../../models/data.model';
+import { IRangeInstance } from '../../models/range.model';
 
 // load data
 export const LOAD_DATA = '[Data] Load Data';
@@ -9,6 +10,7 @@ export const LOAD_DATA_SUCCESS = '[Data] Load Data Success';
 
 export class LoadData implements Action {
     readonly type = LOAD_DATA;
+    constructor(public payload: { familyId: string; processId: string; range: IRangeInstance }) {}
 }
 
 export class LoadDataFail implements Action {

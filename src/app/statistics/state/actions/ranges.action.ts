@@ -6,6 +6,7 @@ import { IRangeInstance } from '../../models/range.model';
 export const ACTIVE_RANGE_CHANGE = '[Ranges] Active Range Change';
 export const RANGE_ADD = '[Ranges] Range add';
 export const RANGE_REMOVE = '[Ranges] Range remove';
+export const UPDATE_LIVE_RANGE = '[Ranges] Update Live Range';
 
 export class ActiveRangeChange implements Action {
     readonly type = ACTIVE_RANGE_CHANGE;
@@ -22,5 +23,9 @@ export class RangeRemove implements Action {
     constructor(public payload: IRangeInstance) {}
 }
 
+export class UpdateLiveRange implements Action {
+    readonly type = UPDATE_LIVE_RANGE;
+}
+
 // action types
-export type RangesAction = ActiveRangeChange | RangeAdd | RangeRemove;
+export type RangesAction = ActiveRangeChange | RangeAdd | RangeRemove | UpdateLiveRange;

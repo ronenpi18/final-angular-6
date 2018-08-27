@@ -1,0 +1,76 @@
+.container {
+    padding: 2rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+
+    .icon-alert {
+        margin-left: 1rem;
+    }
+    .clear-btn {
+        font-size: .7rem;
+        height: 1.5rem;
+        width: 1.5rem;
+        text-align: center;
+        line-height: 1.5rem;
+        background: rgba(255,255,255,.8);
+        color: rgba(0,0,0,.87);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.alert {
+    display: block;
+    margin-bottom: 1rem;
+
+    p-header {
+        background: #f3f3f3;
+        padding: .6rem 1rem;
+        border-top-left-radius: .3rem;
+        border-top-right-radius: .3rem;
+
+        .status-icon {
+            position: relative;
+            top: 1px;
+            font-size: 1.2rem;
+            margin-left: 1rem;
+        }
+    }
+
+    .alert-icon {
+        font-size: 1.8rem;
+        margin-left: 2rem;
+    }
+
+    ul.details {
+        margin-top: .5rem;
+        li {
+            display: inline-block;
+            &:not(:last-child) {
+                margin-left: 2rem;
+            }
+        }
+        .property {
+            font-size: 1.2rem;
+            margin-left: .2rem;
+        }
+        .value {
+            font-size: 1rem;
+        }
+    }
+
+    .status-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: green;
+        border-radius: 50%;
+        margin-left: .5rem;
+    }
+
+    & ::ng-deep .ui-card-body {
+        padding: 1rem 2rem;
+    }
+}

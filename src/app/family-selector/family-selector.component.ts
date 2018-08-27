@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromStore from './state';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import { IFamilyInstance } from './models/family.model';
 
 @Component({

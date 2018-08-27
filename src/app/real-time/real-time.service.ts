@@ -3,23 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { IStatisticsInstance } from './models/data.model';
-import { IRangeInstance } from './models/range.model';
+import { IRangeInstance } from '../statistics/models/range.model';
+import { IAlertsReport } from './models/alert.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StatisticsService {
+export class RealTimeService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getData(familyId: string, processId: string, range: IRangeInstance): Observable<IStatisticsInstance[]> {
+  getAlerts(familyId: string, processId: string, range: IRangeInstance): Observable<IAlertsReport> {
     return this.http
-      .get<IStatisticsInstance>('//5b755724deca780014ec9f65.mockapi.io/api/data')
+      .get<{a: IAlertsReport}>('https://5b755724deca780014ec9f65.mockapi.io/api/alerts/1')
       .pipe(
-        map(data => data[0].instances),
+        map(({ a }) => a),
         catchError((error: any) => Observable.throw(error.json()))
       );
   }

@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?v9oxq8');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?v9oxq8#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?v9oxq8') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?v9oxq8') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?v9oxq8##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?ysgidn');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?ysgidn#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ysgidn') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ysgidn') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ysgidn##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,9 +26,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-more {
+  &:before {
+    content: $icon-more; 
+  }
+}
+.icon-line-graph {
+  &:before {
+    content: $icon-line-graph; 
+  }
+}
 .icon-warning {
   &:before {
     content: $icon-warning; 
+  }
+}
+.icon-alert {
+  &:before {
+    content: $icon-alert; 
   }
 }
 .icon-graph-area {
@@ -56,6 +71,11 @@
     content: $icon-calendar; 
   }
 }
+.icon-search {
+  &:before {
+    content: $icon-search; 
+  }
+}
 .icon-filter {
   &:before {
     content: $icon-filter; 
@@ -69,6 +89,16 @@
 .icon-cogs {
   &:before {
     content: $icon-cogs; 
+  }
+}
+.icon-bug {
+  &:before {
+    content: $icon-bug; 
+  }
+}
+.icon-error {
+  &:before {
+    content: $icon-error; 
   }
 }
 .icon-stats {
@@ -86,6 +116,11 @@
     content: $icon-bullet-list; 
   }
 }
+.icon-menu {
+  &:before {
+    content: $icon-menu; 
+  }
+}
 .icon-close {
   &:before {
     content: $icon-close; 
@@ -94,6 +129,11 @@
 .icon-check {
   &:before {
     content: $icon-check; 
+  }
+}
+.icon-success {
+  &:before {
+    content: $icon-success; 
   }
 }
 .icon-check-filled {
@@ -116,19 +156,14 @@
     content: $icon-arrow-down; 
   }
 }
-.icon-more {
-  &:before {
-    content: $icon-more; 
-  }
-}
 .icon-panels {
   &:before {
     content: $icon-panels; 
   }
 }
-.icon-line-graph {
+.icon-octologo {
   &:before {
-    content: $icon-line-graph; 
+    content: $icon-octologo; 
   }
 }
 .icon-octologo {

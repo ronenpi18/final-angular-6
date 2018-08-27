@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SharedModule } from '../shared/shared.module';
-import { GlobalsProvider } from './providers/globals.provider';
 import { StateModule } from '../state/state.module';
 
 @NgModule({
@@ -20,8 +19,6 @@ import { StateModule } from '../state/state.module';
   exports: [
     NavBarComponent
   ],
-  providers: [
-    GlobalsProvider
-  ]
+  providers: []
 })
 export class CoreModule { }

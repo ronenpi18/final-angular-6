@@ -15,8 +15,9 @@ export class DataEffects {
 
     @Effect()
     loadData$ = this.actions$.ofType(dataActions.LOAD_DATA).pipe(
-        switchMap(() => {
-            return this.statisticsService.getData().pipe(
+        map((action: dataActions.LoadData) => action.payload),
+        switchMap(({ familyId, processId, range }) => {
+            return this.statisticsService.getData(familyId, processId, range).pipe(
                 map(data => new dataActions.LoadDataSuccess(data)),
                 catchError(error => of(new dataActions.LoadDataFail(error)))
             );

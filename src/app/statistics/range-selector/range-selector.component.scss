@@ -17,7 +17,7 @@ ul.tabs {
             cursor: pointer;
             min-width: 27rem;
             padding: 2rem 2rem 2rem 1rem;
-            background: rgba(0,0,0,.05);
+            background: rgb(231, 231, 231);
             color: rgba(0,0,0,.4);
             transition: color .25s;
             &:not(.active):hover {
@@ -44,7 +44,7 @@ ul.tabs {
         }
 
         &.active {
-            background: rgba(0,0,0,.8);
+            background: rgb(74, 74, 74);
             color: white;
         }
     }

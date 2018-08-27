@@ -1,6 +1,25 @@
-<div *ngIf="process$ | async">
-  <p>
-    real-time works!
-    {{(process$ | async).name}}
-  </p>
+<div class="layout-column full-height" *ngIf="process$ | async">
+
+  <!-- header -->
+  <section class="header">
+    <!-- process name and status -->
+    <div class="layout-row vertical-center-items">
+      <span class="status-icon icon icon-{{(process$ | async).status}}"></span>
+      <h2 class="title">{{(process$ | async).name}}</h2>
+      <span class="flex-grow"></span>
+      <span class="icon icon-more"></span>
+    </div>
+    
+    <!-- process details -->
+    <div class="layout-row">
+      <span class="flex-grow"></span>
+    </div>
+  </section>
+
+  <span class="flex-grow"></span>
+
+  <!-- alerts -->
+  <app-real-time-alerts
+    [alerts$]="alerts$">
+  </app-real-time-alerts>
 </div>
