@@ -1,18 +1,21 @@
+import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+
 import * as fromTraces from '../actions/traces.action';
 import { ITrace } from '../../models/trace.model';
-import { convertToEntities } from '../../../utils/ngrx.util';
 
-export interface TracesState {
-    entities: { [id: number]: ITrace };
-    loaded: boolean;
+export interface TracesState extends EntityState<ITrace> {
     loading: boolean;
+    loaded: boolean;
 }
 
-export const initialState: TracesState = {
-    entities: {},
-    loaded: false,
-    loading: false
-};
+export const tracesAdapter: EntityAdapter<ITrace> = createEntityAdapter({
+    selectId: (entity: ITrace) => entity.fullId
+});
+
+export const initialState: TracesState = tracesAdapter.getInitialState({
+    loading: false,
+    loaded: false
+});
 
 export function reducer(
     state = initialState,
@@ -36,20 +39,16 @@ export function reducer(
         }
 
         case fromTraces.LOAD_TRACES_SUCCESS: {
-            const instances = action.payload;
-            const entities = convertToEntities<ITrace>('fullId', instances, state.entities);
-
-            return {
+            return tracesAdapter.addAll(action.payload, {
                 ...state,
                 loading: false,
-                loaded: true,
-                entities
-            }
+                loaded: true
+            });
         }
     }
     return state;
 }
 
-export const getTracesEntities = (state: TracesState) => state.entities;
-export const getTracesLoading = (state: TracesState) => state.loading;
-export const getTracesLoaded = (state: TracesState) => state.loaded;
+export const selectLoading = (state: TracesState) => state.loading;
+export const selectLoaded = (state: TracesState) => state.loaded;
+export const { selectEntities, selectAll } = tracesAdapter.getSelectors();

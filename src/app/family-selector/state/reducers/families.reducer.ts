@@ -1,18 +1,21 @@
-import * as fromFamilies from '../actions/families.action';
-import { IEntityFamilyInstance, IProcessInstance } from '../../models/family.model';
-import { convertToEntities } from '../../../utils/ngrx.util';
+import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 
-export interface FamiliesState {
-    entities: { [id: number]: IEntityFamilyInstance };
-    loaded: boolean;
+import * as fromFamilies from '../actions/families.action';
+import { IFamilyInstance } from '../../models/family.model';
+
+export interface FamiliesState extends EntityState<IFamilyInstance> {
     loading: boolean;
+    loaded: boolean;
 }
 
-export const initialState: FamiliesState = {
-    entities: {},
-    loaded: false,
-    loading: false
-};
+export const familiesAdapter: EntityAdapter<IFamilyInstance> = createEntityAdapter({
+    selectId: (entity: IFamilyInstance) => entity.fullId
+});
+
+export const initialState: FamiliesState = familiesAdapter.getInitialState({
+    loading: false,
+    loaded: false
+});
 
 export function reducer(
     state = initialState,
@@ -36,23 +39,16 @@ export function reducer(
         }
 
         case fromFamilies.LOAD_FAMILIES_SUCCESS: {
-            const instances = action.payload.map(instance => ({
-                ...instance,
-                processes: convertToEntities<IProcessInstance>('fullId', instance.processes)
-            }));
-            const entities = convertToEntities<IEntityFamilyInstance>('fullId', instances, state.entities);
-
-            return {
+            return familiesAdapter.addAll(action.payload, {
                 ...state,
                 loading: false,
-                loaded: true,
-                entities
-            }
+                loaded: true
+            });
         }
     }
     return state;
 }
 
-export const getFamiliesEntities = (state: FamiliesState) => state.entities;
-export const getFamiliesLoading = (state: FamiliesState) => state.loading;
-export const getFamiliesLoaded = (state: FamiliesState) => state.loaded;
+export const selectLoading = (state: FamiliesState) => state.loading;
+export const selectLoaded = (state: FamiliesState) => state.loaded;
+export const { selectEntities, selectAll } = familiesAdapter.getSelectors();

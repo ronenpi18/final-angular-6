@@ -8,10 +8,7 @@ export const getTracesState = createSelector(
     (state: fromFeature.RealTimeState) => state.traces
 );
 
-export const getTracesLoaded = createSelector(getTracesState, fromTraces.getTracesLoaded);
-export const getTracesLoading = createSelector(getTracesState, fromTraces.getTracesLoading);
-export const getTracesEntities = createSelector(getTracesState, fromTraces.getTracesEntities);
-
-export const getAllTraces = createSelector(getTracesEntities, (entities) => {
-    return Object.keys(entities).map(id => entities[id]);
-});
+export const getTracesLoaded = createSelector(getTracesState, fromTraces.selectLoaded);
+export const getTracesLoading = createSelector(getTracesState, fromTraces.selectLoading);
+export const getTracesEntities = createSelector(getTracesState, fromTraces.selectEntities);
+export const getAllTraces = createSelector(getTracesState, fromTraces.selectAll);

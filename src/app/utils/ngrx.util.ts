@@ -18,21 +18,3 @@ export function localStorageMiddleware(
         return newState;
     }
 }
-
-export function convertToEntities<T>(
-    idField: string,
-    instances: T[],
-    initialValue: { [id: number]: T } = {}
-): { [id: number]: T } {
-    return instances.reduce(
-        (entities: { [id: number]: T }, instance: T) => {
-            return {
-                ...entities,
-                [instance[idField]]: instance
-            }
-        },
-        {
-            ...initialValue
-        }
-    );
-}

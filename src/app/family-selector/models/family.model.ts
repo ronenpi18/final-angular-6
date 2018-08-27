@@ -7,21 +7,10 @@ export interface IProcessInstance {
     successes: string;
 }
 
-interface IBaseFamilyInstance {
-    fullId: string;
-    name: string;
-    status: string;
-    alertsAmount: number;
-}
-
-export interface IFamilyInstance extends IBaseFamilyInstance {
+export interface IFamilyInstance {
     fullId: string;
     name: string;
     status: string;
     alertsAmount: number;
     processes: IProcessInstance[];
-}
-
-export interface IEntityFamilyInstance extends IBaseFamilyInstance {
-    processes: { [id: number]: IProcessInstance };
 }

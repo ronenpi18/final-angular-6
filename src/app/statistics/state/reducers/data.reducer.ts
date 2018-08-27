@@ -1,18 +1,20 @@
+import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+
 import * as fromData from '../actions/data.action';
 import { IStatisticsInstance } from '../../models/data.model';
-import { convertToEntities } from '../../../utils/ngrx.util';
 
-export interface DataState {
-    entities: { [id: number]: IStatisticsInstance };
-    loaded: boolean;
+export interface DataState extends EntityState<IStatisticsInstance> {
     loading: boolean;
+    loaded: boolean;
 }
+export const dataAdapter: EntityAdapter<IStatisticsInstance> = createEntityAdapter({
+    selectId: (entity: IStatisticsInstance) => entity.fullId
+});
 
-export const initialState: DataState = {
-    entities: {},
-    loaded: false,
-    loading: false
-};
+export const initialState: DataState = dataAdapter.getInitialState({
+    loading: false,
+    loaded: false
+});
 
 export function reducer(
     state = initialState,
@@ -36,20 +38,16 @@ export function reducer(
         }
 
         case fromData.LOAD_DATA_SUCCESS: {
-            const instances = action.payload;
-            const entities = convertToEntities<IStatisticsInstance>('fullId', instances, state.entities);
-
-            return {
+            return dataAdapter.addAll(action.payload, {
                 ...state,
                 loading: false,
-                loaded: true,
-                entities
-            }
+                loaded: true
+            });
         }
     }
     return state;
 }
 
-export const getDataEntities = (state: DataState) => state.entities;
-export const getDataLoading = (state: DataState) => state.loading;
-export const getDataLoaded = (state: DataState) => state.loaded;
+export const selectLoading = (state: DataState) => state.entities;
+export const selectLoaded = (state: DataState) => state.loading;
+export const { selectEntities, selectAll } = dataAdapter.getSelectors();
